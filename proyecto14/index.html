@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14 de Febrero 💛</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color:#fff;
+            overflow-x:hidden;
+            position: relative;
+        }
+
+        /* FONDO DE ESTRELLAS */
+        .stars{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            pointer-events:none;
+            z-index:0;
+        }
+
+        .star{
+            position:absolute;
+            width:2px;
+            height:2px;
+            background:white;
+            border-radius:50%;
+            opacity:0;
+            animation: twinkle linear infinite;
+        }
+
+        @keyframes twinkle{
+            0%{ opacity:0; transform:scale(0.5); }
+            50%{ opacity:1; transform:scale(1); }
+            100%{ opacity:0; transform:scale(0.5); }
+        }
+
+        header{
+            position: relative;
+            z-index:1;
+            height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            flex-direction:column;
+            padding:20px;
+        }
+
+        header h1{
+            font-family:'Playfair Display', serif;
+            font-size:clamp(2.2rem, 6vw, 3.5rem);
+            margin-bottom:20px;
+        }
+
+        header p{
+            font-size:clamp(1rem, 3.5vw, 1.2rem);
+            max-width:600px;
+            opacity:0.9;
+        }
+
+        section{
+            position: relative;
+            z-index:1;
+            padding:clamp(50px, 8vw, 80px) clamp(20px, 8vw, 10%);
+            position: relative;
+            z-index:1;
+            padding:80px 10%;
+        }
+
+        .section-title{
+            font-family:'Playfair Display', serif;
+            font-size:clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom:40px;
+            text-align:center;
+        }
+
+        /* FRASES */
+        .phrases{
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+            gap:30px;
+        }
+
+        .phrase-card{
+            background:rgba(255,255,255,0.08);
+            padding:30px;
+            border-radius:20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+
+        .phrase-card:hover{
+            transform: translateY(-10px);
+        }
+
+        /* RECUERDOS */
+        .memories{
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+            gap:25px;
+        }
+
+        .memory{
+            border-radius:20px;
+            overflow:hidden;
+            position:relative;
+        }
+
+        .memory img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            transition: transform 0.4s;
+        }
+
+        .memory:hover img{
+            transform: scale(1.1);
+        }
+
+        .memory span{
+            position:absolute;
+            bottom:0;
+            left:0;
+            width:100%;
+            padding:15px;
+            background:rgba(0,0,0,0.6);
+            font-size:0.9rem;
+        }
+
+        /* FOOTER */
+        footer{
+            position: relative;
+            z-index:1;
+            text-align:center;
+            padding:40px 20px;
+            font-size:0.9rem;
+            opacity:0.8;
+        }
+
+        /* DESTELLO DORADO */
+        .flash{
+            position:fixed;
+            inset:0;
+            background:radial-gradient(circle at center, rgba(255,215,128,0.9), rgba(255,215,128,0.3), transparent 70%);
+            opacity:0;
+            pointer-events:none;
+            z-index:25;
+            animation: flashGlow 0.9s ease-out forwards;
+        }
+
+        @keyframes flashGlow{
+            0%{ opacity:0; transform:scale(0.6); }
+            40%{ opacity:1; transform:scale(1); }
+            100%{ opacity:0; transform:scale(1.4); }
+        }
+
+        /* CORAZONES FLOTANTES */
+        .heart{
+            position:fixed;
+            color:#ff4d6d;
+            animation: floatUp 6s linear forwards;
+            font-size:20px;
+            opacity:0.8;
+            z-index:30;
+            pointer-events:none;
+        }
+
+        @keyframes floatUp{
+            0%{ transform:translateY(100vh) scale(0.5); opacity:0; }
+            50%{ opacity:1; }
+            100%{ transform:translateY(-10vh) scale(1.2); opacity:0; }
+        }
+
+        /* ESTRELLAS FUGACES */
+        .shooting-star{
+            position:fixed;
+            top:-10vh;
+            left:50vw;
+            width:120px;
+            height:2px;
+            background: linear-gradient(90deg, rgba(255,255,255,1), rgba(255,255,255,0));
+            opacity:0.8;
+            transform: rotate(-45deg);
+            animation: shoot 1.2s ease-out forwards;
+            z-index:0;
+        }
+
+        @keyframes shoot{
+            0%{ transform:translate(0,0) rotate(-45deg); opacity:1; }
+            100%{ transform:translate(-120vw,120vh) rotate(-45deg); opacity:0; }
+        }
+        
+    @keyframes popIn{0%{transform:scale(0.8);opacity:0;}100%{transform:scale(1);opacity:1;}}
+
+@keyframes modalFadeIn{0%{opacity:0;transform:scale(0.9);}100%{opacity:1;transform:scale(1);}}
+@keyframes modalFadeOut{0%{opacity:1;transform:scale(1);}100%{opacity:0;transform:scale(0.9);}}
+
+        /* CARTA DINÁMICA */
+        .love-envelope{
+            width:180px;
+            max-width:70%;
+            filter:drop-shadow(0 15px 30px rgba(0,0,0,0.5));
+            animation: envelopeSwing 3.5s ease-in-out infinite;
+            transform-origin: top center;
+            cursor:pointer;
+        }
+
+        @keyframes envelopeSwing{
+            0%{ transform: rotate(0deg); }
+            25%{ transform: rotate(2deg); }
+            50%{ transform: rotate(0deg); }
+            75%{ transform: rotate(-2deg); }
+            100%{ transform: rotate(0deg); }
+        }
+
+        .love-envelope:hover{
+            animation-play-state: paused;
+            transform: scale(1.05);
+        }
+
+
+        .reveal{
+            opacity:0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+   .reveal.visible{
+    opacity:1;
+    transform: translateY(0);
+}
+/* ===== GALERÍA ===== */
+.gallery .memory {
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.gallery .memory:hover {
+    transform: scale(1.05);
+}
+
+/* MODAL */
+#gallery-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 50;
+}
+
+#gallery-modal img {
+    max-width: 90%;
+    max-height: 75vh;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+    animation: popIn 0.4s ease;
+}
+
+#close-gallery {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+}
+
+.gallery-controls {
+    margin-top: 20px;
+}
+
+.gallery-controls button {
+    background: #ff4d6d;
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+/* TEXTO ESTILO CARTA */
+.letter-text{
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    line-height: 1.9;
+    color: #fdf6e3;
+    background: rgba(255,255,255,0.08);
+    padding: 30px;
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    animation: letterAppear 0.8s ease forwards;
+    text-align: left;
+}
+
+.letter-text strong{
+    font-weight: 700;
+    color: #ffd166;
+}
+
+@keyframes letterAppear{
+    from{
+        opacity:0;
+        transform: translateY(15px) scale(0.97);
+    }
+    to{
+        opacity:1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- PANTALLA INICIAL -->
+<div id="start-screen" style="position:fixed;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);text-align:center;padding:20px;">
+  <div style="max-width:500px;">
+   <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,6vw,2.4rem);margin-bottom:20px;">Un detalle hecho con amor 💛</h2>
+    <p  style="color: #f1c40f;"> Amor mas de lo que pueda hacer, todo desde mi corazon porque mereces eso y mucho mas. <br> Quiero ver esa sonrisita mi amor para mi princesaaaaa 😻 </p> <br>
+    <h2 style="opacity:0.9;margin-bottom:30px;">Toca el botón y deja que la música y las estrellas hagan su magia ✨</h2>
+    <button id="start-btn" style="padding:15px 35px;border:none;border-radius:40px;font-size:1rem;cursor:pointer;background:#ff4d6d;color:white;box-shadow:0 10px 25px rgba(0,0,0,0.3);">💛 Tocar para comenzar</button>
+  </div>
+</div>
+
+<audio id="bg-music" loop playsinline preload="auto">
+    <source src="ppc-roa.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+</audio>
+
+<div class="stars" id="stars"></div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+<header>
+    <h1>Feliz 14 de Febrero <br> 💛 <br> Amor De Mi Vida</h1>
+    <p>Esta página es un pedacito de lo que siento, hecha con calma, recuerdos y mucho amor.</p>
+    <br><br>
+
+    <h1> CON TODO EL AMOR DEL MUNDO NUNCA OLVIDES QUE ERES LO MEJOR QUE TENGO EN MI VIDA,
+        ERES MI MAYOR ADORACION, ME HACES EL HOMBRE MAS FELIZ A DIARIO TODO ESTO ES PARA TI
+        NUNCA DUDES DE TI MI AMOR NI UN SOLO SEGUNDO PORQUE ERES INCREIBLE TE AMOOOO CON MI VIDA.
+    </h1>
+</header>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<section>
+    <h2 class="section-title">Frases que me recuerdan a ti</h2>
+    <div class="phrases">
+        <div class="phrase-card">Cada instante contigo queda tatuado en mi corazón como un tesoro eterno 💛</div>
+        <div class="phrase-card">No eres parte de mi vida, eres mi vida 💛</div>
+        <div class="phrase-card">Si te tengo a ti, lo tengo todo 💛</div>
+        <div class="phrase-card">Tus risas iluminan mi mundo más que mil estrellas en la noche 🌟</div>
+        <div class="phrase-card">A tu lado aprendí que los silencios también pueden ser melodías de amor 💛</div>
+        <div class="phrase-card">Cada beso tuyo hace que todo a mi alrededor cobre sentido y magia 💛</div>
+        <div class="phrase-card">Contigo por el mundo, cualquier lugar se convierte en un hogar de felicidad 🌍</div>
+        <div class="phrase-card">Cada mirada tuya despierta emociones que nunca creí sentir 💛</div>
+        <div class="phrase-card">Tus palabras suaves florecen en mí como girasoles al sol 🌻</div>
+        <div class="phrase-card">Cada recuerdo contigo brilla más que cualquier tesoro escondido 💛</div>
+        <div class="phrase-card">A tu lado, cada momento simple se vuelve un recuerdo imborrable 💛</div>
+        <div class="phrase-card">Cada gesto tuyo es un faro que guía mi alma hacia la felicidad 💛</div>
+        <div class="phrase-card">Estar contigo es descubrir que el amor es infinito 💛</div>
+        <div class="phrase-card">Con cada momento contigo, aprendo a soñar más grande 💛</div>
+
+
+    </div>
+    <div class="phrase-letter" id="love-letter" style="margin-top:50px; background:rgba(255,255,255,0.07); padding:40px; border-radius:25px; backdrop-filter: blur(12px); line-height:1.8; font-size:1rem; max-width:900px; margin-left:auto; margin-right:auto;">
+        <div id="open-letter" style="text-align:center;margin-bottom:40px;cursor:pointer;">
+    <img src="carta.png" alt="Carta de amor" class="love-envelope" style="width:280px;max-width:85%;background:none;">
+    <p style="margin-top:8px;font-size:0.75rem;letter-spacing:1px;opacity:0.75;">ábreme 💌</p>
+</div>
+        <div id="letter-content" style="display:none;">
+        <p class="reveal"><strong>Mi amor de mi vida, mi persona favorita, mi lugar seguro, tú mi todoooooo 😻</strong></p><br>
+        <p class="reveal">Hoy es San Valentín, pero la verdad es que contigo todos los días tienen algo de mágico, algo de especial, algo que solo tú sabes darle a mi mundo. Desde que llegaste a mi vida, todo cambió de una manera tan bonita que a veces me quedo sin palabras para explicar lo que siento, pero hoy quiero intentarlo, porque tú mereces cada letra, cada pensamiento y cada latido de mi corazón 💛🖇️</p><br>
+        <p class="reveal">Amarte es despertar cada mañana con una sonrisa sin darme cuenta, es pensar en ti incluso en los momentos más simples del día, es sentir calma solo con imaginar tu voz, tu risa, tu forma de ser. Eres esa persona que llegó sin hacer ruido, pero se quedó haciendo eco en mi alma. Eres quien le dio sentido a cosas que antes parecían normales y ahora son recuerdos inolvidables a tu lado ✨</p><br>
+        <p class="reveal">Adoro absolutamente todo de ti. Adoro tu forma de mirar, porque en tus ojos encuentro paz, ternura y un amor sincero. Adoro tu sonrisa, esa que tiene el poder de arreglar mis días incluso cuando todo parece pesado. Adoro tu corazón tan bonito, tan noble, tan lleno de luz, porque amar como tú amas no lo hace cualquiera. Tienes una manera única de cuidar, de apoyar, de estar presente, y eso te hace increíble, te hace perfecta para mí 😻</p><br>
+        <p class="reveal">Contigo aprendí que el amor no es solo palabras bonitas, sino detalles, paciencia, compañía y sueños compartidos. Aprendí que amar es elegirte todos los días, incluso en los momentos difíciles, incluso cuando hay cansancio, incluso cuando no todo es perfecto. Porque contigo entendí que lo real no es perfecto, pero sí verdadero 💫</p><br>
+        <p class="reveal">Me encanta recordar cada momento a tu lado, cada risa, cada conversación hasta tarde, cada plan, cada salida, cada instante que hemos vivido juntos. Me encanta pensar en todo lo que hemos construido y en todo lo que aún nos falta por vivir. Soñar contigo es fácil, porque contigo el futuro se siente seguro, se siente bonito, se siente lleno de amor 🖇️</p><br>
+        <p class="reveal">Si supieras lo orgulloso que me siento de ti 🥹, de la persona que eres, de tu fortaleza, de tu dulzura, de todo lo que logras día a día. Eres inspiración, eres apoyo, eres amor puro. Y no importa cuántas veces te lo diga, siempre será poco comparado con lo que siento por ti 💛</p><br>
+        <p class="reveal">Hoy, en este San Valentín, quiero que sepas que eres el regalo más hermoso que la vida me dio. Que no necesito nada más mientras te tenga a ti. Que mi corazón te eligió y te seguirá eligiendo siempre. Que aquí tienes a alguien que te ama con todo lo que es, con todo lo que tiene y con todo lo que sueña ✨</p><br>
+        <p class="reveal">Gracias por existir, por quedarte, por amarme como lo haces. Gracias por ser tú, simplemente tú.</p>
+        <p class="reveal"><strong>Feliz San Valentín, amor de mi vida.</strong><br>Te amo hoy, mañana y todos los días que nos regale la vida 💛🖇️ eres la mejorrr mi princesaaaa 🌻👑</p>
+    </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">Todo lo que provocas en mi</h2>
+
+    <div class="memory" onclick="openGallery(this)">
+  <img src="recuerdo1.jpeg">
+  <span>Un recuerdo que guardo en el corazón 💛</span>
+
+  <div class="letter-text" style="display:none;">
+    <strong>Mi amor,</strong><br><br>
+    Este momento puede parecer pequeño para el mundo,
+    pero para mí es uno de esos recuerdos que se quedan
+    tatuados en el alma. Porque estaba contigo, porque
+    eras tú, y porque contigo todo se siente verdadero.
+    <br><br>
+    Te amo más de lo que las palabras pueden explicar 💛
+  </div>
+</div>
+
+<div class="memory" onclick="openGallery(this)">
+  <img src="recuerdo2.jpeg">
+  <span>Tu sonrisa boffff💛</span>
+
+  <div class="letter-text" style="display:none;">
+    <strong>Mi princesa,</strong><br><br>
+  Tu sonrisa es un refugio donde quiero quedarme siempre,<br>
+  es como un sol cálido que entra en mi corazón y lo llena de luz.<br>
+  Cada risa tuya despierta mil emociones que no sabía que existían,<br>
+  y hace que todo a mi alrededor se transforme en pura felicidad.
+    <br><br>
+    Te amo con todo mi 💛
+  </div>
+</div>
+
+<div class="memory" onclick="openGallery(this)">
+  <img src="recuerdo3.jpeg">
+  <span>Cada momento contigo es unico💛</span>
+
+  <div class="letter-text" style="display:none;">
+    <strong>Mi corazoncito,</strong><br><br>
+      Cada instante a tu lado se siente mágico,<br>
+  como si el tiempo se detuviera solo para nosotros.<br>
+  Tus risas y miradas llenan mi corazón de alegría,<br>
+  y cada recuerdo contigo queda grabado en mi alma.
+    <br><br>
+    gracias amor darme los mejores dias de mi vida 💛
+  </div>
+</div>
+
+<div class="memory" onclick="openGallery(this)">
+  <img src="recuerdo4.jpeg">
+  <span>Besitos que llenan todo💛</span>
+
+  <div class="letter-text" style="display:none;">
+    <strong>Mi vida,</strong><br><br>
+      Tus besitos llenan cada rincón de mi corazón,<br>
+  como pequeñas chispas que iluminan mis días más grises.<br>
+  Cada gesto tuyo, cada sonrisa, cada abrazo,<br>
+  hace que mi mundo sea más brillante y completo a tu lado.
+    <br><br>
+    me dejas en chock amo todo de ti 💛
+  </div>
+</div>
+
+<div class="memory" onclick="openGallery(this)">
+  <img src="recuerdo5.jpeg">
+  <span> Si las palabras pudieran explicar todo lo que hace sentir en mi💛</span>
+
+  <div class="letter-text" style="display:none;">
+    <strong>Mi amorcito,</strong><br><br>
+     Si las palabras pudieran hablar,<br>
+  gritarían todo lo que siento por ti.<br>
+  Cada latido de mi corazón<br>
+  te pertenece por siempre.
+    <br><br>
+    me encantas de una manera 💛
+  </div>
+</div>
+
+<div class="memory" onclick="openGallery(this)">
+  <img src="recuerdo6.jpeg">
+  <span> Esque como no amarte💛</span>
+
+  <div class="letter-text" style="display:none;">
+    <strong>Mi niña,</strong><br><br>
+       ¿Cómo no amarte, si cada instante contigo se convierte en un recuerdo eterno?<br>
+  Si tu risa ilumina mis días más grises y tus abrazos llenan de calma mi alma inquieta.<br>
+  Cada palabra tuya, cada gesto, cada mirada, me recuerda que la vida tiene sentido solo contigo,<br>
+  y que mi corazón late más fuerte, más feliz, más completo, porque tú eres mi todo.
+    <br><br>
+    eres simplemente maravillosa 💛
+  </div>
+</div>
+
+<div class="memory" onclick="openGallery(this)">
+  <img src="recuerdo7.jpeg">
+  <span> Momentos en el corazon💛</span>
+
+  <div class="letter-text" style="display:none;">
+    <strong>Mi cositaa,</strong><br><br>
+         Cada instante contigo se siente como un universo lleno de colores y emociones,<br>
+  tus palabras suaves y tus gestos sinceros dibujan recuerdos que nunca se desvanecen.<br>
+  En mi pecho guardo la magia de cada mirada y cada risa compartida,<br>
+  y aunque pasen los años, estos momentos vivirán para siempre en mi corazón.
+    <br><br>
+    Amarte no tiene explicacion es increíble 💛
+  </div>
+</div>
+
+<div class="memory" onclick="openGallery(this)">
+  <img src="recuerdo8.jpeg">
+  <span> Las estrellas quedan pequeñas💛</span>
+
+  <div class="letter-text" style="display:none;">
+    <strong>Amor de mi vidaa,</strong><br><br>
+         Las estrellas quedan pequeñas frente a la grandeza de lo que siento por ti,<br>
+  porque tu presencia llena el universo de luz y calidez imposible de medir.<br>
+  Cada momento contigo es un viaje donde el tiempo se detiene y todo cobra sentido,<br>
+  y mi corazón late agradecido por tenerte en mi vida.
+  <br><br>
+    Brillas mas que todasss 💛
+  </div>
+</div>
+
+<div class="memory" onclick="openGallery(this)">
+  <img src="recuerdo9.jpeg">
+  <span> En un mundo tan grande💛</span>
+
+  <div class="letter-text" style="display:none;">
+    <strong>Mi bebe hermosa,</strong><br><br>
+        En un mundo tan grande, encontrarte a ti es como hallar un tesoro escondido,<br>
+  cada instante contigo se siente único y lleno de magia que no se puede explicar.<br>
+  Tus risas, tus abrazos y tu mirada transforman todo lo cotidiano en maravilloso,<br>
+  y mi corazón sabe que a tu lado todo es más brillante, más vivo y más real.
+  <br><br>
+    Eres mi adoracion eterna 💛
+  </div>
+</div>
+
+<div class="memory" onclick="openGallery(this)">
+  <img src="recuerdo10.jpeg">
+  <span> Girasoles💛</span>
+
+  <div class="letter-text" style="display:none;">
+    <strong>Mi amor eterno,</strong><br><br>
+          Entre campos de girasoles, cada uno parece bailar por ti,<br>
+  sus pétalos se inclinan como si conocieran tu nombre en silencio.<br>
+  Mi corazón guarda la calma de un atardecer dorado entre ellos,<br>
+  y cada pensamiento sobre ti florece como semillas que nunca dejan de crecer.
+  <br><br>
+    Eres mi sueñito cumplido 💛
+  </div>
+</div>
+
+<div class="memory" onclick="openGallery(this)">
+  <img src="recuerdo11.jpeg">
+  <span> Estrellitas💛</span>
+
+  <div class="letter-text" style="display:none;">
+    <strong>Mi todo,</strong><br><br>
+    Estrellitas que brillan en el cielo me recuerdan a tu ternura,<br>
+  como pequeñas luces que dan esperanza y dibujan caminos invisibles.<br>
+  Cada parpadeo parece un mensaje secreto que acaricia mi corazón,<br>
+  y me hace imaginar los millones de momentos que aún viviremos juntos,<br>
+  donde tus risas y tus miradas serán la guía que transforme mis días,<br>
+  y cada instante a tu lado se quede grabado en mi memoria como un tesoro eterno.
+  <br><br>
+    Con el corazoncito lleno de amor por ti 💛
+  </div>
+</div>
+
+<div class="memory" onclick="openGallery(this)">
+  <img src="recuerdo12.jpeg">
+  <span> Sentimientos al mil💛</span>
+
+  <div class="letter-text" style="display:none;">
+    <strong>Mi tesoro,</strong><br><br>
+  Sentimientos al mil me recorren cada vez que pienso en ti,<br>
+  como olas que no dejan de rozar la orilla, intensas y profundas.<br>
+  Cada palabra tuya despierta emociones que no sabía que existían,<br>
+  y cada instante contigo se vuelve un recuerdo imborrable que guardo con amor,<br>
+  porque a tu lado todo se siente más vivo, más brillante y lleno de magia.
+  <br><br>
+    Es inexplicable lo que causas en mi 💛
+  </div>
+</div>
+
+<div class="memory" onclick="openGallery(this)">
+  <img src="recuerdo13.jpeg">
+  <span> A tu lado aprendi💛</span>
+
+  <div class="letter-text" style="display:none;">
+    <strong>Mi vida entera,</strong><br><br>
+  A tu lado aprendí que los momentos más simples pueden convertirse en los más valiosos,<br>
+  que un abrazo puede hablar más que mil palabras y que una sonrisa sincera tiene el poder de sanar.<br>
+  Descubrí que los sueños compartidos multiplican su magia y que incluso los silencios juntos tienen melodía.<br>
+  Aprendí a ver la belleza en lo cotidiano porque tú me enseñaste a mirar con el corazón abierto,<br>
+  y que cada gesto tuyo deja una huella imborrable que me recuerda que estar contigo es aprender a vivir de verdad.
+  <br><br>
+    Soy el hombre mas feliz del mundo 💛
+  </div>
+</div>
+
+<div class="memory" onclick="openGallery(this)">
+  <img src="recuerdo14.jpeg">
+  <span> Contigo por el mundo💛</span>
+
+  <div class="letter-text" style="display:none;">
+    <strong>La mujer mas hermosa del mundo entero,</strong><br><br>
+ Contigo por el mundo, cada camino se vuelve una historia que quiero recordar siempre,<br>
+  cada ciudad, cada calle, cada rincón adquiere un color distinto cuando estás a mi lado.<br>
+  Las risas que compartimos resuenan como música en mi corazón, y los silencios se sienten tan llenos de significado<br>
+  que hasta el viento parece susurrarnos secretos que solo nosotros entendemos.<br>
+  Aprendí que los momentos no se miden por su duración, sino por la intensidad con que se viven,<br>
+  y que viajar contigo no es solo recorrer lugares, sino descubrirnos en cada mirada, en cada abrazo,<br>
+  creando recuerdos que se quedan tatuados en el alma, imposibles de borrar.<br>
+  Porque contigo por el mundo todo se siente más brillante, más vasto, más lleno de vida,<br>
+  y sé que mientras estemos juntos, cada instante será una aventura, y cada lugar un hogar
+  <br><br>
+    Gracias por hacer de mi un mundo lleno de color mi amor 💛
+  </div>
+</div>
+
+<!-- MENSAJE SECRETO -->
+<section style="text-align:center;">
+    <h2 class="section-title">Un secreto solo para ti 🔐</h2>
+    <button id="open-secret" style="padding:14px 30px;border:none;border-radius:30px;background:#ff4d6d;color:white;font-size:1rem;cursor:pointer;">Descubrir mensaje 💛</button>
+</section>
+
+<div id="secret-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:20;align-items:center;justify-content:center;padding:20px;">
+  <div id="modal-content" style="background:linear-gradient(135deg,#1f1c3c,#302b63);padding:40px;border-radius:25px;max-width:500px;width:100%;text-align:center;">
+    <h3 style="font-family:'Playfair Display',serif;margin-bottom:20px;">Ingresa la palabra secreta 💌</h3>
+    <input id="secret-input" type="password" placeholder="Nuestra palabra…" style="padding:12px;width:100%;border-radius:20px;border:none;margin-bottom:20px;">
+    <button id="unlock" style="padding:12px 25px;border:none;border-radius:25px;background:#ff4d6d;color:white;cursor:pointer;">Desbloquear</button>
+    <p id="error" style="color:#ffb3c1;margin-top:15px;display:none;">No es esa 😿</p>
+    <div id="secret-text" style="display:none;margin-top:25px;line-height:1.7; animation: popIn 0.6s ease;">
+        <p><strong>Este mensaje es solo tuyo 💛</strong></p><br>
+        <p>Si llegaste hasta aquí es porque eres curiosa… y porque te amo más de lo que puedo explicar. Prometo cuidarte, respetarte y elegirte incluso cuando no sea fácil. Contigo quiero todo, sin miedo y sin dudas. Eres mi siempre.</p><br>
+        <p><strong>Te amo infinitamente 🌻👑</strong></p><br>
+        <button id="close-secret" style="margin-top:15px;padding:10px 22px;border:none;border-radius:20px;background:#ffd166;color:#1f1c3c;cursor:pointer;">Cerrar 💫</button>
+    </div>
+  </div>
+</div>
+
+<!-- GALERÍA MODAL -->
+<div id="gallery-modal">
+    <span id="close-gallery">✕</span>
+    <img id="gallery-img" src="">
+    <div class="gallery-controls">
+        <button id="prev">◀</button>
+        <button id="next">▶</button>
+    </div>
+</div>
+
+
+<footer>
+    Hecho con amor, solo para ti 💛💛💛
+</footer>
+
+<script>
+    // MUSICA DE FONDO compatible con móvil y desktop
+    const music = document.getElementById('bg-music');
+    const startMusic = () => {
+        if (music.paused) {
+            music.volume = 0.6;
+            music.play().catch(()=>{});
+        }
+        const screen = document.getElementById('start-screen');
+        if(screen){
+            screen.style.transition = 'opacity 0.6s';
+            screen.style.opacity = '0';
+            setTimeout(()=>screen.remove(), 600);
+        }
+    };
+    document.getElementById('start-btn').addEventListener('click', startMusic);
+    document.addEventListener('touchstart', startMusic, { once: true });
+
+    // corazones
+    function createHeart(x,y){
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤';
+        heart.style.left = x + 'px';
+        heart.style.top = y + 'px';
+        heart.style.fontSize = (Math.random() * 18 + 12) + 'px';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+    }
+
+    // lluvia corta de corazones (para el mensaje secreto)
+    function heartRain(){
+        const modalBox = document.getElementById('modal-content');
+        const rect = modalBox.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        let count = 0;
+        const interval = setInterval(()=>{
+            createHeart(centerX + (Math.random()*80-40), centerY);
+            count++;
+            if(count > 14) clearInterval(interval);
+        },120);
+    }
+
+    // corazones continuos eliminados (solo se activan en momentos especiales)
+
+    // ESTRELLAS ANIMADAS
+    const starsContainer = document.getElementById('stars');
+    const starCount = 120;
+
+    for(let i = 0; i < starCount; i++){
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.animationDuration = (Math.random() * 5 + 3) + 's';
+        star.style.animationDelay = Math.random() * 5 + 's';
+        starsContainer.appendChild(star);
+    }
+
+    // ESTRELLAS FUGACES
+    function createShootingStar(){
+        const star = document.createElement('div');
+        star.classList.add('shooting-star');
+        star.style.top = Math.random() * 50 + 'vh';
+        star.style.left = Math.random() * 100 + 'vw';
+        document.body.appendChild(star);
+
+        setTimeout(() => star.remove(), 1500);
+    }
+
+    setInterval(createShootingStar, 4000);
+
+    // MENSAJE SECRETO LOGICA
+    const modal = document.getElementById('secret-modal');
+    const openBtn = document.getElementById('open-secret');
+    const unlockBtn = document.getElementById('unlock');
+    const input = document.getElementById('secret-input');
+    const secretText = document.getElementById('secret-text');
+    const error = document.getElementById('error');
+
+    openBtn.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        const content = document.getElementById('modal-content');
+        content.style.animation = 'modalFadeIn 0.5s ease';
+    });
+
+    unlockBtn.addEventListener('click', () => {
+        if(input.value === '22/06/24'){
+            secretText.style.animation = 'popIn 0.6s ease';
+            secretText.style.display = 'block';
+            error.style.display = 'none';
+            heartRain();
+            triggerFlash();
+        } else {
+            error.style.display = 'block';
+        }
+    });
+
+    // CARTA APERTURA
+    const openLetter = document.getElementById('open-letter');
+    const letterContent = document.getElementById('letter-content');
+
+    if(openLetter){
+        openLetter.addEventListener('click', ()=>{
+            openLetter.style.display = 'none';
+            letterContent.style.display = 'block';
+        });
+    }
+
+    // REVELAR TEXTO AL SCROLL
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(r => observer.observe(r));
+
+    // DESTELLO DORADO
+    function triggerFlash(){
+        const flash = document.createElement('div');
+        flash.classList.add('flash');
+        document.body.appendChild(flash);
+        setTimeout(()=>flash.remove(), 900);
+    }
+
+    // CERRAR MENSAJE SECRETO
+    const closeBtn = document.getElementById('close-secret');
+    closeBtn.addEventListener('click', () => {
+        const content = document.getElementById('modal-content');
+        content.style.animation = 'modalFadeOut 0.4s ease';
+        setTimeout(()=>{
+            modal.style.display = 'none';
+            secretText.style.display = 'none';
+            input.value = '';
+            error.style.display = 'none';
+        },400);
+    });
+
+// ===== GALERÍA =====
+const galleryImages = document.querySelectorAll('.gallery img');
+const modalGallery = document.getElementById('gallery-modal');
+const modalImg = document.getElementById('gallery-img');
+const closeGallery = document.getElementById('close-gallery');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+
+let currentIndex = 0;
+
+galleryImages.forEach((img, index) => {
+    img.addEventListener('click', () => {
+        currentIndex = index;
+        openGallery(img.src);
+    });
+});
+
+function openGallery(src){
+    modalImg.src = src;
+    modalGallery.style.display = 'flex';
+}
+
+function showImage(index){
+    if(index < 0) index = galleryImages.length - 1;
+    if(index >= galleryImages.length) index = 0;
+    currentIndex = index;
+    modalImg.src = galleryImages[currentIndex].src;
+}
+
+prevBtn.addEventListener('click', () => showImage(currentIndex - 1));
+nextBtn.addEventListener('click', () => showImage(currentIndex + 1));
+
+closeGallery.addEventListener('click', () => {
+    modalGallery.style.display = 'none';
+});
+function openGallery(card){
+    const text = card.querySelector('.letter-text');
+
+    if(text.style.display === 'block'){
+        text.style.display = 'none';
+    } else {
+        document.querySelectorAll('.letter-text').forEach(t=>{
+            t.style.display = 'none';
+        });
+        text.style.display = 'block';
+    }
+}
+
+
+
+</script>
+
+</body>
+</html>
